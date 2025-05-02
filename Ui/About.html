@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About - RaisingCodeX</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #0f0f0f, #1f1f1f);
+      color: #fff;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .about-container {
+      text-align: center;
+      background: #1c1c1c;
+      padding: 30px 20px;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0,255,100,0.3);
+      max-width: 450px;
+      width: 100%;
+    }
+
+    .profile-pic {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid #00ff99;
+      object-fit: cover;
+      margin-bottom: 15px;
+    }
+
+    .name {
+      font-size: 28px;
+      margin: 10px 0;
+      font-weight: bold;
+    }
+
+    .animated-text {
+      font-size: 18px;
+      min-height: 40px;
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .social-links a {
+      padding: 10px 15px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      color: white;
+      transition: 0.3s;
+    }
+
+    .tik { background: #010101; border: 1px solid #ff0050; }
+    .insta { background: #833ab4; }
+    .yt { background: #ff0000; }
+    .x { background: #000; border: 1px solid #fff; }
+
+    .social-links a:hover {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+
+    @media screen and (max-width: 480px) {
+      .name { font-size: 24px; }
+      .animated-text { font-size: 16px; }
+      .social-links a { font-size: 14px; padding: 8px 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="about-container">
+    <img src="RaisingCodeX.jpg" alt="RaisingCodeX" class="profile-pic" />
+    <h1 class="name">Raising CodeX</h1>
+    <p class="animated-text" id="animatedMessage"></p>
+
+    <div class="social-links">
+      <a href="https://www.tiktok.com/@RaisingCodeX" target="_blank" class="tik">TikTok</a>
+      <a href="https://www.instagram.com/RaisingCodeX" target="_blank" class="insta">Instagram</a>
+      <a href="https://www.youtube.com/@RaisingCodeX" target="_blank" class="yt">YouTube</a>
+      <a href="https://github.com/RaisingCodeX" target="_blank" class="x">Github</a>
+      <a href="https://twitter.com/RaisingCodeX" target="_blank" class="x">X</a>
+    </div>
+  </div>
+
+  <script>
+    const messages = [
+      "Crafting viral captions with AI...",
+      "Creating smooth UI/UX for all platforms...",
+      "Passionate about digital tools and design.",
+      "Follow me for more updates!"
+    ];
+
+    let index = 0;
+    let charIndex = 0;
+    const animatedMessage = document.getElementById("animatedMessage");
+
+    function typeMessage() {
+      if (charIndex < messages[index].length) {
+        animatedMessage.textContent += messages[index].charAt(charIndex);
+        charIndex++;
+        setTimeout(typeMessage, 50);
+      } else {
+        setTimeout(() => {
+          animatedMessage.textContent = "";
+          charIndex = 0;
+          index = (index + 1) % messages.length;
+          typeMessage();
+        }, 2000);
+      }
+    }
+
+    typeMessage();
+  </script>
+  
+</body>
+</html>
